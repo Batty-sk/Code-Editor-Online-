@@ -1,0 +1,62 @@
+body{
+    margin:0;
+    padding:0;
+}
+.br{
+    border:1px solid black;
+}
+#code-area{
+    height: 100vh;
+}
+#section-c h3{
+    font-family: monospace;
+    color:rgb(0, 23, 128);
+}
+#section-c{
+    background-color: whitesmoke;
+}
+#code-area{
+    border:1px solid black;
+}
+.bx-code-block{
+    color:rgb(66, 17, 20);
+    font-size:3rem;
+}
+
+#Themes li{
+    list-style: none;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    align-self: center;
+    margin-right: 10px;
+    box-shadow:0px 0px 0px black;
+    transition: box-shadow 500ms;
+    cursor: pointer;
+}
+#Themes li:hover{
+    box-shadow: 0px 0px 5px black;
+}
+#red-color{
+    background-color: rgb(255, 132, 0);
+}
+#black-color{
+    background-color: black;
+}
+#purple-color{
+    background-color: rgb(209, 6, 223);
+}
+.bx-terminal{
+    color:rgb(66, 17, 20);
+    font-size:3rem;
+}
+
+
+#section-t{
+background-color: whitesmoke;
+}
+#section-t h3{
+     font-family: monospace;
+    color:rgb(0, 23, 128);
+}
+
