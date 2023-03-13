@@ -60,3 +60,18 @@ background-color: whitesmoke;
     color:rgb(0, 23, 128);
 }
 
+#curr_lang{
+    font-family: monospace;
+    font-size: 1.2rem;
+
+}
+#selectLanguage{
+    background-color: black;
+    color:rgb(62, 223, 255);
+    font-family: monospace;
+    padding:15px;
+
+}
+#output{
+    resize: horizontal;
+}
