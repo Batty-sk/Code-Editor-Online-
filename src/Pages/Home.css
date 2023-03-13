@@ -66,12 +66,26 @@ background-color: whitesmoke;
 
 }
 #selectLanguage{
-    background-color: black;
-    color:rgb(62, 223, 255);
+    background-color: whitesmoke;
+    color:blue;
     font-family: monospace;
     padding:15px;
 
 }
 #output{
     resize: horizontal;
+}
+#live-code{
+    font-family: monospace;
+    font-size: 1.4rem;
+    
+}
+.bx-run{
+    font-size: 1.7rem;
+}
+.bxs-circle{
+    background-color:red;
+    color:red;
+    font-size: 1.3rem;
+    border-radius: 50%;
 }

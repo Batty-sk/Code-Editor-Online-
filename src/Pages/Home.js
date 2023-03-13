@@ -5,7 +5,7 @@ import { useRef, useState,useEffect } from 'react';
 let html={
     language:'html',
     last_value:'none',
-    default_value:"<html>\n <!-- This Is The Boiler Plate For html tag --> \n \n <head> <title>Index</title> </head> \n \n<body> \n<h1 style='color':red;>Index</h1> \n </body> \n\n </html>"
+    default_value:"<html>\n <!-- This Is The Boiler Plate For html tag --> \n \n <head> <title>Index</title> </head> \n \n<body> \n<h1 style='color:blue;'>Index</h1> \n </body> \n\n </html>"
 }
 
 let javascript={
@@ -116,6 +116,22 @@ function Home()
                                     </select>
                                     
                             </div>
+                            
+                            <div className="col-auto align-self-center text-center">
+
+                            {current_langauage_value!='html'? <button className="btn btn-success ps-2 pe-3 " onClick={()=>{
+                                    console.log('sheesh')
+                                }}>
+                                    <div className='d-flex align-items-center'>
+                                        <span className='me-2'><i class='bx bx-run'></i></span>
+                                        Run
+                                    </div>
+                                </button>: <div className='d-flex align-items-center' id='live-code'>
+                                        <span className='me-2'><i class='bx bxs-circle'></i></span>
+                                        Live
+                                    </div> }
+                               
+                            </div>
 
                         </div>
 
@@ -146,7 +162,7 @@ function Home()
                         </div>
                         
                         <div id="output" className='h-100'>
-                            {current_langauage_value=='html'?<iframe src="" frameborder="0" srcDoc={html.last_value} height={'100%'}></iframe>:<div></div>}
+                            {current_langauage_value=='html'?<iframe src="" frameborder="0" srcDoc={current_code_value} height={'100%'}></iframe>:<div></div>}
                               
                         </div>
 
