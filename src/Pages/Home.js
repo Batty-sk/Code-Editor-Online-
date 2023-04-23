@@ -11,13 +11,26 @@ let html={
 let javascript={
     language:'javascript',
     last_value:'none',
-    default_value:"//Now You Can Write Code In Javascript :) \n console.log('Sheeeeeeesh')"
+    default_value:`
+    /*  *******   *****   *           *
+           *      *   *    *         *
+           *      * * *     *       *
+       *   *      *   *      *     *
+       *   *      *   *       *   *
+       * * *      *   *        ***       */
+    `
 }
 
 let c={
     language:'c',
     last_value:'none',
-    default_value:"#include<stdio.h> \n int main(void)\n{\n printf('%d','Now you can code in C :)') \n}"
+    default_value:"#include<stdio.h> \n int main(void) \n { \n printf('%d','Now you can code in C :)') \n}"
+}
+
+let c__={
+    language:'c++',
+    last_value:'none',
+    default_value:"#include<iostream> \n using namespace std; \n int main()  \n { \n // Now you can code in c++ \n cout<<'hello peter' \n } "
 }
 
 function Home()
@@ -31,6 +44,7 @@ function Home()
         'html':html,
         'javascript':javascript,
         'c':c,
+        'c++':c__,
     }
     const editorRef=useRef(null)// we will assign the refrence of editor instance from which we can get the current value of the editor
 
@@ -74,6 +88,13 @@ function Home()
 
         }
     }
+    function handelRun()
+    {
+        // api calling
+        //fetch('');                
+
+
+    }
 
 
     return(
@@ -113,32 +134,34 @@ function Home()
                                         <option value="javascript">Javascript</option>
                                         <option value="html">Html/Css</option>
                                         <option value="c">C</option>
-                                    </select>
-                                    
-                            </div>
-                            
-                            <div className="col-auto align-self-center text-center">
+                                        <option value="c++">C++</option>
 
+                                    </select>
+                                        
+                            </div>
+                                          
+                            <div className="col-auto align-self-center text-center">
+                                           
                             {current_langauage_value!='html'? <button className="btn btn-success ps-2 pe-3 " onClick={()=>{
                                     console.log('sheesh')
-                                }}>
-                                    <div className='d-flex align-items-center'>
+                                }}>         
+                                    <div className='d-flex align-items-center' onClick={handelRun}>
                                         <span className='me-2'><i class='bx bx-run'></i></span>
-                                        Run
-                                    </div>
+                                            Run
+                                    </div>  
                                 </button>: <div className='d-flex align-items-center' id='live-code'>
                                         <span className='me-2'><i class='bx bxs-circle'></i></span>
-                                        Live
+                                            Live
                                     </div> }
-                               
+                                             
                             </div>
 
                         </div>
 
                         <div className="row h-100">
-                            <div className="col-12">          
+                            <div className="col-12 ">          
                             <Editor
-                              height="100%"
+                              height="91%"
                               language={current_langauage_value}
                               defaultLanguage='javascript'// value = 'current code value'
                               value={current_code_value}
@@ -154,15 +177,15 @@ function Home()
 
                     <div className="col-3 br p-0" id="output-area">
 
-                        <div id="section-t" className='d-flex br p-3'>
+                           <div id="section-t" className='d-flex br p-3'>
                                 <span>
                                     <i class='bx bx-terminal'></i>
                                 </span>
                                 <h3 className='align-self-center ps-2 pt-2'>Output</h3>
                         </div>
                         
-                        <div id="output" className='h-100'>
-                            {current_langauage_value=='html'?<iframe src="" frameborder="0" srcDoc={current_code_value} height={'100%'}></iframe>:<div></div>}
+                        <div id="output" className='h-100 w-100'>
+                            {current_langauage_value=='html'?<iframe src="" frameborder="0" srcDoc={current_code_value} height={'100%'} width={'100%;'}></iframe>:<div></div>}
                               
                         </div>
 
@@ -170,6 +193,7 @@ function Home()
             </div>
         </div>
         </div>
-    )
-}
+    )    
+    }
+
 export default Home

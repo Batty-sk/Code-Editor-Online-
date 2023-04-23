@@ -1,25 +1,66 @@
 body{
     margin:0;
     padding:0;
+    background-image: url('../background.png');
 }
-.br{
-    border:1px solid black;
-}
+
+
 #code-area{
     height: 100vh;
 }
 #section-c h3{
     font-family: monospace;
-    color:rgb(0, 23, 128);
+    color:white;
+    font-weight: bolder;
 }
 #section-c{
-    background-color: whitesmoke;
+    background-color:rgba(31, 31, 31, 0.476);
 }
 #code-area{
-    border:1px solid black;
+    border-bottom:14px outset rgb(5, 34, 39);
+
+    animation-name:change_color;
+    animation-timing-function: ease-in-out;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+}
+@keyframes change_color{
+    0%{
+        border-bottom: 14px outset black;
+    }
+    10%{
+        border-bottom: 14px outset rgba(83, 211, 24, 0.98);
+    }
+    20%{
+        border-bottom: 14px outset rgb(242, 8, 180);
+    }
+    30%{
+        border-bottom: 14px outset rgb(198, 124, 217);
+    }
+    40%{
+        border-bottom: 14px outset rgb(117, 121, 222);
+    }
+    50%{
+        border-bottom: 14px outset rgb(60, 207, 223);
+    }
+    60%{
+        border-bottom: 14px outset rgb(173, 237, 217);
+    }
+    70%{
+        border-bottom: 14px outset rgb(234, 255, 0);
+    }
+    80%{
+        border-bottom: 14px outset rgb(60, 224, 10);
+    }
+    90%{
+        border-bottom: 14px outset rgb(255, 42, 0);
+    }
+    100%{
+        border-bottom: 14px outset rgb(138, 0, 0);
+    }
 }
 .bx-code-block{
-    color:rgb(66, 17, 20);
+    color:rgb(189, 219, 54);
     font-size:3rem;
 }
 
@@ -47,17 +88,13 @@ body{
     background-color: rgb(209, 6, 223);
 }
 .bx-terminal{
-    color:rgb(66, 17, 20);
+    color:rgb(189, 219, 54);
     font-size:3rem;
 }
 
 
 #section-t{
-background-color: whitesmoke;
-}
-#section-t h3{
-     font-family: monospace;
-    color:rgb(0, 23, 128);
+background-color: rgb(0, 0, 0);
 }
 
 #curr_lang{
@@ -67,14 +104,13 @@ background-color: whitesmoke;
 }
 #selectLanguage{
     background-color: whitesmoke;
-    color:blue;
+    color:rgb(3, 4, 1);
+    font-weight: bold;
     font-family: monospace;
     padding:15px;
 
 }
-#output{
-    resize: horizontal;
-}
+
 #live-code{
     font-family: monospace;
     font-size: 1.4rem;
@@ -88,4 +124,16 @@ background-color: whitesmoke;
     color:red;
     font-size: 1.3rem;
     border-radius: 50%;
+}
+#output-area{
+    background-color: white;
+    border-left: 1px solid black;
+       
+}
+
+#output-area h3{
+    font-weight: bolder;
+    color:white;   
+    font-family: monospace;
+ 
 }

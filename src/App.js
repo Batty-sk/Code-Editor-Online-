@@ -1,11 +1,13 @@
 import './App.css';
 import Home from './Pages/Home';
-
+import Footer from './Components/Footer';
 function App() {
   return (
     <div className="App">
-      <h1>Sheesh Code Editor</h1>
+      <h3 id='page-heading'>heesh Code Editor</h3>
       <Home></Home>
+      <Footer></Footer>
+
     </div>
   );
 }

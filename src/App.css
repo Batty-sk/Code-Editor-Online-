@@ -1,6 +1,15 @@
-h1{
+#page-heading{
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-style:italic;
   text-align: center;
-  color:lightcoral;
+  color:rgb(15, 27, 15);
+  font-weight: bolder;
+  font-style: italic;
+}
+#page-heading::before{
+  content:"S";
+  font-family: monospace;
+  font-size: 9.9rem;
+  font-style: italic;
+  color:rgb(0, 128, 107);
+
 }
