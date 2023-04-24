@@ -12,12 +12,20 @@ let javascript={
     language:'javascript',
     last_value:'none',
     default_value:`
-    /*  *******   *****   *           *
-           *      *   *    *         *
-           *      * * *     *       *
-       *   *      *   *      *     *
-       *   *      *   *       *   *
-       * * *      *   *        ***       */
+    /*  *******   *****   *           *   *****  ********   *********  ********  *********  *********  ***********
+           *      *   *    *         *    *   *  *          *          *      *      *      *       *       * 
+           *      * * *     *       *     * * *  *          *          ********      *      *********       *
+       *   *      *   *      *     *      *   *  ********   *          * *           *      *               *
+       *   *      *   *       *   *       *   *         *   *          *   *         *      *               *
+       * * *      *   *        ***        *   *  ********   *********  *     *   *********  *               *   
+       
+                *****************************************************************************************
+       ************************************************************************************************************
+        
+
+    console.log(" hello peter " );
+        
+        */
     `
 }
 
@@ -35,7 +43,7 @@ let c__={
 
 function Home()
 {
-    const[current_code_value,update_code_value]=useState("// This is Comment \n console.log('Hello Peter')")
+    const[current_code_value,update_code_value]=useState(javascript.default_value)
     const[current_langauage_value,update_current_language]=useState('javascript');
 
 
