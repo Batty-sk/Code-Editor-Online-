@@ -2,6 +2,7 @@ import './Home.css'
 import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
 import { useRef, useState,useEffect } from 'react';
 
+
 let html={
     language:'html',
     last_value:'none',
@@ -21,18 +22,38 @@ let javascript={
        
                 *****************************************************************************************
        ************************************************************************************************************
-        
+       */        
 
-    console.log(" hello peter " );
+    function helloworld()
+    {
+        console.log("hello peter");
+    }
         
-        */
+      
     `
 }
 
 let c={
     language:'c',
     last_value:'none',
-    default_value:"#include<stdio.h> \n int main(void) \n { \n printf('%d','Now you can code in C :)') \n}"
+    default_value:`
+               *********************************************************************************************
+        *************************************************************************************************************
+
+    
+    #include<stdio.h> 
+
+    void helloworld()
+    {
+        printf("Hello Peter \n");
+    }
+    
+    \n int main(void) \n { \n
+        helloworld();
+        
+    \n}
+    
+    `
 }
 
 let c__={
@@ -40,6 +61,9 @@ let c__={
     last_value:'none',
     default_value:"#include<iostream> \n using namespace std; \n int main()  \n { \n // Now you can code in c++ \n cout<<'hello peter' \n } "
 }
+
+
+let current_Theme='white';
 
 function Home()
 {
@@ -87,6 +111,7 @@ function Home()
         console.log('printing the curr value of editor ', currValue);
         if(Lang.default_value==currValue)//htmt.default_value == html code 
         {
+            console.log( Lang.defaultLanguage );
             console.log('yeah its same as previous');
         }
         else{
@@ -101,6 +126,16 @@ function Home()
         // api calling
         //fetch('');                
 
+
+    }
+
+    function ThemeChange(x)
+    {
+        const THEMES={'red-color':'red','black-color':'black', 'purple-color':'purple'}
+        console.log("Theme Changer button Triggered ! ");
+        console.log (x.currentTarget.id);
+        document.body.style.backgroundColor=THEMES[x.currentTarget.id];
+        //To be continued
 
     }
 
@@ -127,9 +162,9 @@ function Home()
                             <div className="col-4 p-0">
                                         <ul id='Themes' className='d-flex h-100 '>
 
-                                                <li id='red-color'></li>
-                                                <li id='black-color'></li>
-                                                <li id='purple-color'></li>
+                                                <li id='red-color' onClick={ThemeChange}></li>
+                                                <li id='black-color' onClick={ThemeChange}></li>
+                                                <li id='purple-color' onClick={ThemeChange}></li>
                                                 
                                         </ul>
                             </div>
@@ -176,7 +211,9 @@ function Home()
                               onMount={getEditorinstance}
                               onChange={()=>{
                               update_code_value(editorRef.current.getValue());
-                              }}
+                              }
+                              
+                            }
                               ></Editor>
                               
                             </div>
