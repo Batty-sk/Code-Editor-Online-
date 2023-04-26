@@ -6,7 +6,18 @@ import { useRef, useState,useEffect } from 'react';
 let html={
     language:'html',
     last_value:'none',
-    default_value:"<html>\n <!-- This Is The Boiler Plate For html tag --> \n \n <head> <title>Index</title> </head> \n \n<body> \n<h1 style='color:blue;'>Index</h1> \n </body> \n\n </html>"
+    default_value:`
+    <!-- 
+    * *** *   * *** *    **************   ******      ******   ******
+    *     *   *     *    *            *   *     *    *     *   *    *
+    *     *****     *    *****    *****   *       **       *   *    *
+    *               *        *    *       *                *   *    *
+    *     *****     *        *    *       *    * **** *    *   *    *
+    *     *   *     *        *    *       *    *      *    *   *    **********
+    *     *   *     *        *    *       *    *      *    *   *             *
+    * *** *   * *** *        ******       ******      ******   ***************
+    -->
+    <html>\n\n \n <head> <title>Index</title> </head> \n \n<body> \n<h1 style='color:blue;'>Index</h1> \n </body> \n\n </html>`
 }
 
 let javascript={
@@ -37,7 +48,9 @@ let c={
     language:'c',
     last_value:'none',
     default_value:`
-               *********************************************************************************************
+
+
+         **************************************************************************************************************************************************
         *************************************************************************************************************
 
     
@@ -62,6 +75,24 @@ let c__={
     default_value:"#include<iostream> \n using namespace std; \n int main()  \n { \n // Now you can code in c++ \n cout<<'hello peter' \n } "
 }
 
+let java={
+    language:'java',
+    last_value:'none',
+    default_value:  
+    `
+    ******************************************************************************************************
+ **************************************************************************************************************************
+
+    public static void main()
+    {
+        public void function()
+        {
+            System.println("Hello Peter");
+        }
+    }
+
+    `,
+}
 
 let current_Theme='white';
 
@@ -77,6 +108,7 @@ function Home()
         'javascript':javascript,
         'c':c,
         'c++':c__,
+        'java':java,
     }
     const editorRef=useRef(null)// we will assign the refrence of editor instance from which we can get the current value of the editor
 
@@ -136,6 +168,7 @@ function Home()
         console.log (x.currentTarget.id);
         document.body.style.backgroundColor=THEMES[x.currentTarget.id];
         //To be continued
+        console.log(current_Theme);
 
     }
 
@@ -211,6 +244,7 @@ function Home()
                               onMount={getEditorinstance}
                               onChange={()=>{
                               update_code_value(editorRef.current.getValue());
+                              
                               }
                               
                             }
