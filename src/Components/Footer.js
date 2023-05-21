@@ -8,7 +8,7 @@ function Footer()
                         <div className="row justify-content-between">
                             <div className="col-3 org-name">
                                 <div>
-                                <h3>Sheesh Code Editor</h3>
+                                <h3>SGIT Code Editor</h3>
                                 <i>@Challenge Everything.</i>
                                 </div>
                             </div>

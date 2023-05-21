@@ -78,14 +78,14 @@ body{
 #Themes li:hover{
     box-shadow: 0px 0px 5px black;
 }
-#red-color{
-    background-color: rgb(255, 132, 0);
+#vs{
+    background-color: rgb(232, 230, 228);
 }
-#black-color{
-    background-color: black;
+#vs-dark{
+    background-color: rgb(71, 28, 51);
 }
-#purple-color{
-    background-color: rgb(209, 6, 223);
+#hc-black{
+    background-color: rgb(0, 0, 0);
 }
 .bx-terminal{
     color:rgb(189, 219, 54);

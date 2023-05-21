@@ -4,12 +4,13 @@
   color:rgb(15, 27, 15);
   font-weight: bolder;
   font-style: italic;
+  font-size: 40px;
 }
 #page-heading::before{
-  content:"S";
-  font-family: monospace;
-  font-size: 9.9rem;
+  content:"SG";
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 9.0rem;
   font-style: italic;
-  color:rgb(0, 128, 107);
+  color:rgb(2, 69, 36);
 
 }

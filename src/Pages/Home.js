@@ -1,8 +1,7 @@
 import './Home.css'
 import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
 import { useRef, useState,useEffect } from 'react';
-
-
+import axios from 'axios'
 let html={
     language:'html',
     last_value:'none',
@@ -48,29 +47,18 @@ let c={
     language:'c',
     last_value:'none',
     default_value:`
-
-
-         **************************************************************************************************************************************************
-        *************************************************************************************************************
-
-    
     #include<stdio.h> 
 
     void helloworld()
     {
-        printf("Hello Peter \n");
+        printf("Hello Peter");
     }
-    
-    \n int main(void) \n { \n
-        helloworld();
-        
-    \n}
     
     `
 }
 
 let c__={
-    language:'c++',
+    language:'cpp',
     last_value:'none',
     default_value:"#include<iostream> \n using namespace std; \n int main()  \n { \n // Now you can code in c++ \n cout<<'hello peter' \n } "
 }
@@ -80,9 +68,6 @@ let java={
     last_value:'none',
     default_value:  
     `
-    ******************************************************************************************************
- **************************************************************************************************************************
-
     public static void main()
     {
         public void function()
@@ -94,12 +79,37 @@ let java={
     `,
 }
 
-let current_Theme='white';
+let program={
+    script:`
+    // bruh 
+    #include<stdio.h>
+    int main() {
+    int a;
+    printf("Sheesh %d",532);
+}
+
+    `,
+    language: "c",
+    versionIndex: "0",
+    clientId: "deb044576ffaa0c7114d7c6762a33a91",
+    clientSecret:"7bfc4791e63b771f0ce40cf9ede9ebea668b708ee094e90db82da10f048ead4f",
+    stdin:'',
+    SetConfiguration(script,language,versionIndex,stdin='')
+    {
+        this.script=script;
+        this.language=language;
+        this.versionIndex=versionIndex;
+        this.stdin=stdin;
+    }
+};
+const API_URL = 'https://api.jdoodle.com/v1/execute';
+ // Replace with your CORS proxy URL
 
 function Home()
 {
     const[current_code_value,update_code_value]=useState(javascript.default_value)
     const[current_langauage_value,update_current_language]=useState('javascript');
+    const[current_theme,update_theme]=useState('vs-dark');
 
 
     // registering the language for direct access with key. 
@@ -107,11 +117,15 @@ function Home()
         'html':html,
         'javascript':javascript,
         'c':c,
-        'c++':c__,
+        'cpp':c__,
         'java':java,
     }
     const editorRef=useRef(null)// we will assign the refrence of editor instance from which we can get the current value of the editor
-
+     
+    const iframestyle = {
+        width: '100%',
+        resize: 'horizontal',
+      };
 
     // capturing the current stage of a monaco editor instance at the time of on load.
     function getEditorinstance(editor,monaco)
@@ -132,6 +146,7 @@ function Home()
         else{
             update_code_value(ToLang.last_value);//the new value will be last value of the javascript.
         }
+
 
         update_current_language(ToLang.language);// html
         console.log('done :)');
@@ -155,21 +170,21 @@ function Home()
     }
     function handelRun()
     {
-        // api calling
-        //fetch('');                
+        //     making the json data
+        program.SetConfiguration(current_code_value,current_langauage_value)
 
+        axios.post(API_URL,program).then((x)=>{
+            console.log('output', x);
+        }).catch((x)=>{console.log('error',x)});
+      //  console.log(current_code_value,current_langauage_value);             
 
     }
 
     function ThemeChange(x)
     {
-        const THEMES={'red-color':'red','black-color':'black', 'purple-color':'purple'}
-        console.log("Theme Changer button Triggered ! ");
-        console.log (x.currentTarget.id);
-        document.body.style.backgroundColor=THEMES[x.currentTarget.id];
+        console.log(x.currentTarget.id)
+        update_theme(x.currentTarget.id);
         //To be continued
-        console.log(current_Theme);
-
     }
 
 
@@ -195,9 +210,9 @@ function Home()
                             <div className="col-4 p-0">
                                         <ul id='Themes' className='d-flex h-100 '>
 
-                                                <li id='red-color' onClick={ThemeChange}></li>
-                                                <li id='black-color' onClick={ThemeChange}></li>
-                                                <li id='purple-color' onClick={ThemeChange}></li>
+                                                <li id='vs' onClick={ThemeChange}></li>
+                                                <li id='vs-dark' onClick={ThemeChange}></li>
+                                                <li id='hc-black' onClick={ThemeChange}></li>
                                                 
                                         </ul>
                             </div>
@@ -210,8 +225,8 @@ function Home()
                                         <option value="javascript">Javascript</option>
                                         <option value="html">Html/Css</option>
                                         <option value="c">C</option>
-                                        <option value="c++">C++</option>
-
+                                        <option value="cpp">C++</option>
+                                        <option value="java">Java</option>
                                     </select>
                                         
                             </div>
@@ -235,13 +250,15 @@ function Home()
                         </div>
 
                         <div className="row h-100">
-                            <div className="col-12 ">          
+                            <div className="col-12 ">   
+
                             <Editor
                               height="91%"
                               language={current_langauage_value}
                               defaultLanguage='javascript'// value = 'current code value'
                               value={current_code_value}
                               onMount={getEditorinstance}
+                              theme={current_theme}
                               onChange={()=>{
                               update_code_value(editorRef.current.getValue());
                               
@@ -264,7 +281,7 @@ function Home()
                         </div>
                         
                         <div id="output" className='h-100 w-100'>
-                            {current_langauage_value=='html'?<iframe src="" frameborder="0" srcDoc={current_code_value} height={'100%'} width={'100%;'}></iframe>:<div></div>}
+                            {current_langauage_value=='html'?<iframe src="" frameborder="0" srcDoc={current_code_value} height={'100%'} width={'100%;'} style={iframestyle}></ iframe>:<div></div>}
                               
                         </div>
 

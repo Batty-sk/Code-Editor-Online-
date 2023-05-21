@@ -28,6 +28,7 @@
     cursor: pointer;
     top: -10px;
 }
+
 .f-socials li::before{
     content: "";
     display:inline-block;

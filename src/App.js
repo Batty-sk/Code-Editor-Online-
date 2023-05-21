@@ -4,7 +4,7 @@ import Footer from './Components/Footer';
 function App() {
   return (
     <div className="App">
-      <h3 id='page-heading'>qwert Code Editor</h3>
+      <h3 id='page-heading'>IT Code Editor</h3>
       <Home></Home>
       <Footer></Footer>
 
