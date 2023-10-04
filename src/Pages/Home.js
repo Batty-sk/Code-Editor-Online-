@@ -57,10 +57,16 @@ let c={
     `
 }
 
+let python={
+    language:'python',
+    last_value:'none',
+    default_value:"Welcome To The Python Promgramming!! \n print('ola')"
+}
+
 let c__={
     language:'cpp',
     last_value:'none',
-    default_value:"#include<iostream> \n using namespace std; \n int main()  \n { \n // Now you can code in c++ \n cout<<'hello peter' \n } "
+    default_value:"#include<iostream> \n using namespace std; \n int main()  \n { \n // Now you can code in c++ \n cout<<'hello peter' \n } Welcome To Cpp "
 }
 
 let java={
